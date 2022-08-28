@@ -4,13 +4,24 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import ReduxThunk from "redux-thunk";
+import promiseMiddleWare from "redux-promise";
+import rootReducer from "./_reducers";
+import { composeWithDevTools } from "redux-devtools-extension";
+const store = createStore(
+  rootReducer,
+  applyMiddleware(promiseMiddleWare, ReduxThunk)
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

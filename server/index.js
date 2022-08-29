@@ -38,10 +38,6 @@ app.post("/api/users/register", (req, res) => {
   });
 });
 
-app.get("/api/test", (req, res) => {
-  res.send("안녕하세요~");
-});
-
 app.post("/api/users/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     // user 정보가 존재안할떄

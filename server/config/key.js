@@ -1,5 +1,8 @@
 if (process.env.NODE_ENV === "production") {
-  module.exports = require("./prod");
+  // 배포모드
+  module.exports = require("./prod"); // prod.js 내보내기 db주소 감춰있음
 } else {
-  module.exports = require("./dev");
+  module.exports = require("./dev"); // dev.js 설정 내보내기
 }
+
+process.env.USER = "dd";
